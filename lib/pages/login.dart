@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:room/utils/todo_tile.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+// list of tasks
+  List toDoList = [
+    ['Make Tutorial', false],
+    ['Ms Dynamics 365', true],
+    ['Finish PMP certification', false],
+  ];
+
+  // handling tapping the check box
+  void checkBoxChanged (value, index) {
+    setState(() {
+      toDoList[index][1] = !toDoList[index][1];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +37,17 @@ class HomePage extends StatelessWidget {
         elevation: 0,
       ),
       body: 
-      ListView(
-        children: [
-          toDoTile(taskCompleted: true, taskName: 'Make Tutorial',),
-          toDoTile(taskName: 'Ms Dynamics 365', taskCompleted: false,),
-          toDoTile(taskCompleted: true, taskName: 'Get some Sleep',),
-        ],
+      ListView.builder(
+        itemCount: toDoList.length,
+        itemBuilder: (BuildContext context, int index) 
+        { 
+          return toDoTile(
+          taskName: toDoList[index][0], 
+          taskCompleted: toDoList[index][1], 
+          onChanged: (value) => checkBoxChanged(value, index),
+          );
+         },
+        
       ),
     );
   }
