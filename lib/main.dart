@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:room/pages/login.dart';
+import 'package:room/pages/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
       ),
