@@ -32,22 +32,9 @@ class _HomePageState extends State<HomePage> {
       return dialogueBox(
         controller: _controller,
         onSave: () { 
-          //saveTask();
-          setState(() {
-            //add the current item to the list
-            toDoList.add([_controller.text, false]);
-            //_controller.clear();
-          });
-          _controller.clear();
-          Navigator.of(context).pop();
+          saveTask();
           },
-          //setState(() {
-            //add the current item to the list
-            //toDoList.add([_controller.text, false]);
-            //_controller.clear();
-          //});
-          //_controller.clear();
-          //Navigator.of(context).pop(),
+          
          
         onCancel: () => Navigator.pop(context),  
         
@@ -59,7 +46,7 @@ class _HomePageState extends State<HomePage> {
   void saveTask () {
     setState(() {
             //add the current item to the list
-            toDoList.add([_controller.text, false]);
+            toDoList.add([_controller.text.toString(), false]);
             Navigator.pop(context);
             _controller.clear();
          });
@@ -86,10 +73,12 @@ class _HomePageState extends State<HomePage> {
         itemCount: toDoList.length,
         itemBuilder: (BuildContext context, int index) 
         { 
-          return toDoTile(
-          taskName: toDoList[index][0], 
-          taskCompleted: toDoList[index][1], 
-          onChanged: (value) => checkBoxChanged(value, index),
+          return SingleChildScrollView(
+            child: toDoTile(
+            taskName: toDoList[index][0].toString(), 
+            taskCompleted: toDoList[index][1], 
+            onChanged: (value) => checkBoxChanged(value, index),
+            ),
           );
          },
         
