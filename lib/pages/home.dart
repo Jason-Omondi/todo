@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   // handling tapping the check box
-  void checkBoxChanged (value, index) {
+  void checkBoxChanged (bool? value, int index) {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
     });
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
          },
         
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.add),onPressed: addTask),
+      floatingActionButton: FloatingActionButton(onPressed: addTask, child: const Icon(Icons.add_circle)),
     );
   }
 }

@@ -16,13 +16,16 @@ class dialogueBox extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: controller,
               decoration: InputDecoration(
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
                 hintText: 'Write Task',
                 hintStyle: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w300)
               ),
             ),
+            SizedBox(height: 50),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //save
                 MyButton(text: 'Save', onPressed: onSave,),
