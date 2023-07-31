@@ -52,8 +52,12 @@ class _HomePageState extends State<HomePage> {
          });
   }
 
-  // handle delete task
-  void deleteTask() {}
+  // handle delete task from the toDoList
+  void deleteTask(int index) {
+    setState(() {
+      toDoList.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +79,10 @@ class _HomePageState extends State<HomePage> {
         { 
           return SingleChildScrollView(
             child: toDoTile(
-            taskName: toDoList[index][0].toString(), 
+            taskName: toDoList[index][0], 
             taskCompleted: toDoList[index][1], 
             onChanged: (value) => checkBoxChanged(value, index),
+            deleteFunction: (context) => {},
             ),
           );
          },
